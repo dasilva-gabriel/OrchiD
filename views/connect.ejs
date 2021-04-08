@@ -1,0 +1,30 @@
+<%- include('header') %>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/connect.js"></script>
+
+    <div class="container">
+        
+        <% if (message.length > 0) { %>
+            <p><%= message %></p>
+        <% } %>
+
+        <div class="sign">
+            <form method="post" action="/login">
+                <h1>Connexion au site</h1>
+                <h2></h2>
+                    <label>E-Mail:</label>
+                    <input type="text" name="mail">
+
+                    <label>Mot de passe:</label>
+                    <input type="password" name="password">
+
+                    <label>Voir le mot de passe:</label>
+                    <input id="checkbox" type="checkbox" name="view_mdp" value="clair" >
+
+                  <input id="login" type="submit" value="Login">
+              </form>
+        </div>
+        
+
+    </div>
+<%- include('footer') %>

@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace;
+}
+body{
+    background: #39464d;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 0;
+}
+
+.navbar ul {
+    display: block;
+    padding: 20px;
+    opacity: 0.5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+    list-style-type: none;
+}
+  
+.navbar a {
+    text-decoration: none;
+    color: #60bdec;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+    font-size: 120%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container h1 {
+    padding: 10px;
+    color: #9b59b6;
+}
+.container h2 {
+    color: #ffcb6b;
+}
+
+.container p {
+    color: #abc0ca;
+}
+
+.container-block {
+    padding: 20px;
+    background: #2b353a;
+    border: 5px solid #2B353A;
+    border-radius: 21px;
+}
+
+h3 {
+    color: #f77669;
+    text-align: left;
+    padding: 10px;
+}
+
+.content {
+    padding: 20px;
+    background: #2b353a;
+    border: 5px solid #2B353A;
+    border-radius: 21px;
+    display: inline-block;
+}
+
+.content_description {
+    width: 25px;
+    max-height: 50px;
+}
+
+footer {
+    padding: 5px;
+    text-align: center;
+    background: #2b353a;
+    color: #ffcb6b;
+    bottom: 0%
+}
+
+table {
+    border: 1px solid #333;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom img {
+    transition: transform .9s ease;
+}
+.zoom:hover img {
+    transform: scale(2.5);
+}
+
+/* [!] NOTE: CSS du Slider récupéré sur https://www.w3schools.com/ */
+.slidecontainer {
+    width: 100%;
+}
+  
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #34495e;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #3498db;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #3498db;
+    cursor: pointer;
+}
+/* Fin CSS du Slider */
+
+/* CONNEXION ET INSCRIPTION */
+.sign{
+    padding: 20px;
+    background: #2b353a;
+    border: 5px solid #2B353A;
+    border-radius: 21px;
+}
+.sign input[type = "text"],.sign input[type = "password"],.sign select,.sign input[type = "number"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.sign input[type = "text"]:focus,.sign input[type = "password"]:focus,.box select:focus{
+    width: 280px;
+    border-color: #34495e;
+}
+.sign input[type = "submit"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #34495e;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.sign input[type = "submit"]:hover{
+    background: #2980b9;
+}
+/* FIN DE LA GESTION DE LOGIN */

@@ -1,0 +1,46 @@
+<%- include('header') %>
+
+<div class="container">
+        <h1>Commandes a traiter</h1>
+    <% for(i in commands) { 
+      var id = commands[i].commandID;
+      %>
+      <% if(commands[i].state == 0) { %>
+        <div class="content">
+        <h2>Commande n°<%= id %></h2>
+        <h3>Bouquet perso. a réaliser:</h3>
+        <% for(j in contents) { 
+          %>
+          <% if(contents[j].type === "flowers" && contents[j].id === id) { %>
+            <% for(k in flowers) { 
+              console.log(id + " == "+contents[j].contentID)
+              if(flowers[k].flowerID == contents[j].contentID) {
+            %>
+              <p><%= flowers[k].name %></p>
+            
+          <% }}} %>  
+        <% } %>   
+      <button command-id="<%= id %>">Commande prête</button>  
+      </div>
+      <% } %>      
+    <% } %>      
+
+</div>
+    
+<%- include('footer') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('button').each(function() {
+  $(this).on('click', function() {
+     ready($(this).attr("command-id"));
+  })
+});
+
+function ready(val) {
+  $.post("statecommand", { id: val } )
+  location.reload();
+}
+
+</script>

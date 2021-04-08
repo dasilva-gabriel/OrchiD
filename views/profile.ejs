@@ -1,0 +1,118 @@
+ <%- include('header') %>
+
+    <div class="container">
+        <a style="text-align:right" href="logout">Se déconnecter</a>
+        <h1>Profil & Panier</h1>
+        <h2>Nom:</h2>
+        <p><%=profile.name%></p>
+        <br>
+        
+        <% 
+        var price = 0;
+        for(i in cart) { 
+            if(cart[i].type.toUpperCase() === "PREMADE") {
+            %>
+            <% for(j in premades) { 
+                if(premades[j].premadeID == cart[i].id) {
+                %>
+                <div class="content">
+                    <div class="zoom"><img src="<%= premades[j].image %>" height="75" width="75"></div>
+                    <h2><%= premades[j].name %></h2>
+                    <p><%= premades[j].price %> €</p>
+
+                    <button class="delete" cartid = "<%= premades[j].premadeID %>" type="P">Retirer</button>
+                </div>
+            
+            <%
+            price += premades[j].price;
+            }} %>  
+        <% }} %>   
+            <br>
+        <% for(i in cart) { 
+            if(cart[i].type.toUpperCase() === "FLOWERS") {
+            %>
+            <% for(jquery in flowers) { 
+                if(flowers[j].flowerID == cart[i].id) {
+                %>
+                <div class="content">
+                    <div class="zoom"><img src="<%= flowers[j].image %>" height="75" width="75"></div>
+                    <h2><%= flowers[j].name %></h2>
+                    <p><%= flowers[j].price %> €</p>
+
+                    <button class="delete" cartid = "<%= flowers[j].flowerID %>" type="F">Retirer</button>
+
+                </div>
+            <%
+            price += flowers[j].price;
+        
+        }} %>  
+        <% }} %>  
+
+        <br>
+        <h2>Prix: <%= price %> €</h2>
+        <% if(price > 0) {%>
+            <button class="command">Passer la commande</button>
+        <% } %>  
+    </div>
+
+    <div class="container">
+        <h1>Commandes en cours de traitement</h1>
+        <% for(i in commands) { 
+            if(commands[i].state == 0) {
+            %>
+            
+            <div class="content">
+                <h3>Commande n°<%= commands[i].commandID %></h3>
+
+            </div>
+        <% }} %>  
+    </div>
+
+    <div class="container">
+        <h1>Commandes terminées</h1>
+        <% for(i in commands) { 
+            if(commands[i].state == 1) {
+            %>
+            
+            <div class="content">
+                <h3>Commande n°<%= commands[i].commandID %></h3>
+
+            </div>
+        <% }} %>  
+    </div>
+<%- include('footer') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('.delete').each(function() {
+  $(this).on('click', function() {
+     deleteFromCart($(this).attr('cartid'), $(this).attr('type'));
+  })
+});
+
+$('.command').each(function() {
+  $(this).on('click', function() {
+     command();
+  })
+});
+
+function command() {
+  console.log("COMMAND");
+alert("Commande passée.");
+  $.post("cart-to-command");
+  location.reload();
+}
+
+function deleteFromCart(i, type) {
+    console.log("DELETE " + type + " " + i);
+    if(type === "P") {
+        $.post("premade-removecart", { id: i } )
+    } else  if(type === "F") {
+        $.post("flower-removecart", { id: i } )
+    }
+
+    location.reload();
+}
+
+</script>

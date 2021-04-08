@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+<div class="container">
+    <h1>Customisation de bouquets</h1>
+    <% for(i in flowers) { %>
+        <div class="content">
+            <div class="zoom"><img src="<%= flowers[i].image %>" height="100" width="100"></div>
+            <h3><%= flowers[i].name %></h3>
+            <p><%= flowers[i].price %></p>
+            <button flower-id="<%= flowers[i].flowerID %>">Ajouter</button>
+        </div>
+        
+    <% } %>    
+</div>
+    
+<%- include('footer') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('button').each(function() {
+  $(this).on('click', function() {
+     addToCart($(this).attr("flower-id"));
+  })
+});
+
+function addToCart(val) {
+  console.log("VALUE: ", val);
+
+  $.post("flower-addtocart", { id: val } )
+}
+
+</script>
